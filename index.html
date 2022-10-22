@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>w.</title>
+<link href="style.css" rel="stylesheet" />
+<link rel="icon" href="sa.png" type="image/x-icon">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+<meta property="og:title" content="w - Website">
+<meta property="og:description" content="">
+<meta property="og:url" content="w.pl">
+<meta property="og:site_name" content="w website">
+<meta property="og:type" content="website">
+<meta property="og:image" content="pfp.img">
+</head>
+<body>
+<div id="box" class="glassmorphism-box center">
+<center>
+<div class="pfp">
+<div class="pfp-border rainbow-bg">
+<div class="main-pfp">
+<img src="sa.png" class="main-pfp-img"></img>
+</div>
+</div>
+</div>
+</center>
+<div class="box-text">
+<center>
+<h1 class="zoomin">w.#1337</h1>
+</a>
+</center>
+</div>
+<center>
+<a href="https://instagram.com/sikeratarananlayatar">
+<div class="button-react zoominx">
+<div class="button-text-div">
+<center>
+<i class="fa-brands fa-instagram hx"></i>
+<h3 class="hf hx">Instagram</h3>
+</center>
+</div>
+</div>
+</a>
+</center>
+<div class="margin-1">
+<center>
+<a href="https://www.youtube.com/channel/UCSR94BuMsBYTXxYKttTprfA/featured">
+<div class="button-react zoominx" style="background-color: #e74c3c;">
+<div class="button-text-div">
+<center>
+<i class="fa-brands fa-youtube hx"></i>
+<h3 class="hf hx">YouTube</h3>
+</center>
+</div>
+</div>
+</a>
+</center>
+</div>
+<div class="margin-1">
+<center>
+<a href="https://github.com/warcy0">
+<div class="button-react zoominx" style="background-color: #140264;">
+<div class="button-text-div">
+<center>
+<i class="fa-brands fa-github"></i>
+<h3 class="hf hx">Github</h3>
+</center>
+</div>
+</div>
+</a>
+</center>
+</div>
+<div>
+<div class="margin-1">
+<center>
+<a href="https://discord.com/users/770526232646516737">
+<div class="button-react zoominx" style="background-color: #3498db;">
+<div class="button-text-div">
+<center>
+<i class="fa-brands fa-discord hx"></i>
+<h3 class="hf hx">Discord</h3>
+</center>
+</div>
+</div>
+</a>
+</center>
+</div>
+</div>
+</div>
+<div class="watermark">
+<div id="effector" class="kurs-bg">
+<p class="kurs-price" id="btcPrice"></p>
+<div class="kurs-chart">
+<canvas height="115px" id="btcChart"></canvas>
+</div>
+</div>
+<h4 class="watermark-text">developed by w</h4>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function startenc() {
+    const btcData = async () => {
+  const response = await fetch('https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=EUR&limit=119&api_key=0646cc7b8a4d4b54926c74e0b20253b57fd4ee406df79b3d57d5439874960146');
+  const responsepln = await fetch('https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=PLN&limit=119&api_key=0646cc7b8a4d4b54926c74e0b20253b57fd4ee406df79b3d57d5439874960146');
+  const json = await response.json();
+  // nie pytac sie skond wzialem api xD
+  const data = json.Data.Data
+  const times = data.map(obj => obj.time)
+  const prices = data.map(obj => obj.high)
+  return {
+    times,
+    prices
+  }
+}
+
+function checkStatus(response) {
+  if (response.ok) {
+    return Promise.resolve(response);
+  } else {
+    return Promise.reject(new Error(response.statusText));
+  }
+}
+
+
+let createBtcChart
+
+async function printBtcChart() {
+  let { times, prices } = await btcData()
+
+  let btcChart = document.getElementById('btcChart').getContext('2d');
+
+  let gradient = btcChart.createLinearGradient(0, 0, 0, 400);
+
+  gradient.addColorStop(0, 'rgba(247,147,26,.5)');
+  gradient.addColorStop(.425, 'rgba(255,193,119,0)');
+
+  Chart.defaults.global.defaultFontFamily = 'Red Hat Text';
+  Chart.defaults.global.defaultFontSize = 12;
+
+  createBtcChart = new Chart(btcChart, {
+    type: 'line',
+    data: {
+      labels: times,
+      datasets: [{
+        label: '$',
+        data: prices,
+        backgroundColor: gradient,
+        borderColor: 'rgba(247,147,26,1)',
+        borderJoinStyle: 'round',
+        borderCapStyle: 'round',
+        borderWidth: 3,
+        pointRadius: 0,
+        pointHitRadius: 10,
+        lineTension: .2,
+      }]
+    },
+
+    options: {
+      title: {
+        display: false,
+        text: 'Heckin Chart!',
+        fontSize: 35
+      },
+
+      legend: {
+        display: false
+      },
+
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0
+        }
+      },
+
+      scales: {
+        xAxes: [{
+          display: false,
+          gridLines: {}
+        }],
+        yAxes: [{
+          display: false,
+          gridLines: {}
+        }]
+      },
+
+      tooltips: {
+        callbacks: {
+          title: function() {}
+       },
+        displayColors: false,
+        yPadding: 10,
+        xPadding: 10,
+        position: 'nearest',
+        caretSize: 10,
+        backgroundColor: 'rgba(255,255,255,.9)',
+        bodyFontSize: 15,
+        bodyFontColor: '#303030' 
+      }
+    }
+  });
+}
+
+async function updateBitcoinPrice() {
+  let { times, prices } = await btcData()
+  let currentPrice = prices[prices.length-1].toFixed(2);
+
+  document.getElementById("btcPrice").innerHTML = "$" + currentPrice;
+}
+updateBitcoinPrice()
+
+printBtcChart()
+
+//chart.js
+}
+</script>
+<script type="text/javascript">
+    var trig = 0;
+    function showbtc() {
+        if (trig == 0) {
+            startenc()
+            var element = document.getElementById("effector");
+            element.classList.toggle("animation-kurs");
+            var element2 = document.getElementById("box");
+            element2.classList.toggle("upslideanimation");
+
+            setTimeout(function () {
+                element.classList.toggle("margin-hs");
+                element2.classList.toggle("margin-hs2");
+            }, 1400);
+
+            trig = 1;
+        }
+    }
+</script>

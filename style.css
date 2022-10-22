@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body {
+    padding: 0;
+    margin: 0;
+    color: white;
+    background-color: #101010;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.glassmorphism-box {
+    background: rgba( 255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
+    backdrop-filter: blur( 4px);
+    -webkit-backdrop-filter: blur( 4px);
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18);
+    height: 450px;
+    width: 340px;
+}
+
+.watermark-text {
+    opacity: 0.25;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+.pfp-border {
+    height: 128px;
+    width: 128px;
+    background-color: #101010;
+    border-radius: 100%;
+}
+
+.main-pfp-img {
+    border-radius: 100%;
+    width: 120px;
+    padding-top: 4px;
+}
+
+.pfp {
+    margin-top: 25px;
+}
+
+.box-text h1 {
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.button-react {
+    background-color: #9b59b6;
+    border-radius: 10px;
+    width: 95%;
+    height: 48px;
+}
+
+.button-react-2 {
+    background-color: #9b59b6;
+    border-radius: 10px;
+    width: 153.25px;
+    height: 48px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.hx {
+    margin-top: 10px;
+}
+
+.test2 {
+    display: inline-block;
+}
+
+.hf {
+    display: inline-block;
+    margin-left: 2.5px;
+}
+
+
+/* addons */
+
+.rainbow-bg {
+    animation: rainbow-bg 2.5s linear;
+    animation-iteration-count: infinite;
+}
+
+.rainbow {
+    animation: rainbow 2.5s linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rainbow-bg {
+    100%,
+    0% {
+        background-color: rgb(255, 0, 0);
+    }
+    8% {
+        background-color: rgb(255, 127, 0);
+    }
+    16% {
+        background-color: rgb(255, 255, 0);
+    }
+    25% {
+        background-color: rgb(127, 255, 0);
+    }
+    33% {
+        background-color: rgb(0, 255, 0);
+    }
+    41% {
+        background-color: rgb(0, 255, 127);
+    }
+    50% {
+        background-color: rgb(0, 255, 255);
+    }
+    58% {
+        background-color: rgb(0, 127, 255);
+    }
+    66% {
+        background-color: rgb(0, 0, 255);
+    }
+    75% {
+        background-color: rgb(127, 0, 255);
+    }
+    83% {
+        background-color: rgb(255, 0, 255);
+    }
+    91% {
+        background-color: rgb(255, 0, 127);
+    }
+}
+
+@keyframes rainbow {
+    100%,
+    0% {
+        color: rgb(255, 0, 0);
+    }
+    8% {
+        color: rgb(255, 127, 0);
+    }
+    16% {
+        color: rgb(255, 255, 0);
+    }
+    25% {
+        color: rgb(127, 255, 0);
+    }
+    33% {
+        color: rgb(0, 255, 0);
+    }
+    41% {
+        color: rgb(0, 255, 127);
+    }
+    50% {
+        color: rgb(0, 255, 255);
+    }
+    58% {
+        color: rgb(0, 127, 255);
+    }
+    66% {
+        color: rgb(0, 0, 255);
+    }
+    75% {
+        color: rgb(127, 0, 255);
+    }
+    83% {
+        color: rgb(255, 0, 255);
+    }
+    91% {
+        color: rgb(255, 0, 127);
+    }
+}
+
+.zoomin {
+    transition: transform 0.25s ease-in-out;
+}
+
+.zoomin:hover {
+    transform: scale(1.05);
+}
+
+.zoominx {
+    transition: transform 0.25s cubic-bezier(0.45, 0.25, 0, 0.95);
+}
+
+.zoominx:hover {
+    transform: scale(1.025);
+}
+
+.margin-1 {
+    margin-top: 5px;
+}
+
+.margin-2 {
+    margin-top: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.kurs-bg {
+    height: 155px;
+    width: 340px;
+    background-color: rgba(10, 10, 10, 0.5);
+    position: fixed;
+    bottom: -160px;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18);
+}
+
+.animation-kurs {
+    animation-name: anikurs;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-duration: 1.5s;
+}
+
+.kurs-chart {
+    width: 340px;
+}
+
+.kurs-price {
+    font-weight: 200;
+    font-size: 20px;
+    position: relative;
+    margin-left: 15px;
+    margin-top: 7.5px;
+}
+
+.kurs-chart canvas {
+    margin-top: -32px;
+    border-radius: 10px;
+}
+
+.margin-hs {
+    bottom: 170px;
+}
+
+.margin-hs2 {
+    top: calc(50% - 85px);
+}
+
+.upslideanimation {
+    animation-name: upslide;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-duration: 1.5s;
+}
+
+@keyframes upslide {
+    0% { top: 50%; }
+    100% { top: calc(50% - 85px); }
+}
+
+@keyframes anikurs {
+    0% { bottom: -160px; }
+    100% { bottom: 170px; }
+}
